@@ -1,0 +1,78 @@
+doctype html
+.col-md-12
+  ul.nav.nav-tabs
+    li.active
+      a(
+        data-target = '#inputs'
+        data-toggle = 'tab'
+      ) Inputs
+    li
+      a(
+        data-target = '#checkboxes'
+        data-toggle = 'tab'
+      ) Radios / Checkboxes
+  .tab-content
+    #inputs.tab-pane.fade.in.active
+      br
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("text_input")'
+      )
+        span Campo:&nbsp;
+        input( disabled )
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("textarea_input")'
+      )
+        span Área de texto:&nbsp;
+        input( disabled )
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("prepend_text_input")'
+      )
+        span Campo con prefijo:&nbsp;
+        input( disabled )
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("append_text_input")'
+      )
+        span Campo con postfijo:&nbsp;
+        input( disabled )
+    #checkboxes.tab-pane.fade
+      br
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("inline_radios")'
+      )
+        span Radios en línea:&nbsp;
+        input( disabled )
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("list_radios")'
+      )
+        span Radios en lista:&nbsp;
+        input( disabled )
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("inline_checkboxes")'
+      )
+        span Checkboxes en línea:&nbsp;
+        input( disabled )
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("list_checkboxes")'
+      )
+        span Checkboxes en lista:&nbsp;
+        input( disabled )
+  br
+  .col-md-10.center
+    form(
+      name = '{{form.name}}'
+    )
+      legend(
+        ng-bind = 'form.name'
+      )
+      form-element(
+        form = 'form'
+        input = 'input'
+        index = '$index'
+        ng-repeat = 'input in form.inputs'
+      )

@@ -1,17 +1,19 @@
  /* jslint node: true */
- /* global angular */
+ /* global angular, $ */
 'use strict';
 
-var directive = angular.module( 'ardroz.formBuilder', [] );
+var app = angular.module( 'ardroz.formBuilder', []);
+app.directive( 'formElement', formElement );
+app.directive( 'formBuilder', formBuilder );
 
-directive.directive( 'formBuilder', formBuilder );
-function formBuilder () {
+formBuilder.$inject = ['$templateCache'];
+function formBuilder ( templateCache ) {
   return {
     restrict: 'E',
     scope: {
       form: '='
     },
-    templateUrl: '/html/common/directive_templates/form_builder.html',
+    template: templateCache.get('templates/form_builder.html'),
     link: function ( scope, element, attrs ){
       scope.editable = {};
 
@@ -68,7 +70,6 @@ function formBuilder () {
   };
 }
 
-directive.directive( 'formElement', formElement );
 formElement.$inject = ['$http', '$templateCache', '$compile', '$parse'];
 function formElement ( http, templateCache, compile, parse ) {
   return {
@@ -82,16 +83,13 @@ function formElement ( http, templateCache, compile, parse ) {
     link: function ( scope, element, attrs ){
       scope.input.editable = false;
       scope.input.required = false;
-      var url = '/html/common/directive_templates/' + scope.input.type + '.html';
 
-      http.get( url, { cache: templateCache } )
-        .success( function ( template ) {
-          element = element.replaceWith( compile( template )( scope ));
-        });
+      var template = templateCache.get('templates/' + scope.input.type + '.html');
+      element = element.replaceWith( compile( template )( scope ) );
 
       scope.remove = function () {
         scope.form.inputs.splice( this.index, 1 );
-        angular.element('#input' + this.index).remove();
+        $('#input' + this.index).remove();
       };
 
       scope.inputTypes = [
