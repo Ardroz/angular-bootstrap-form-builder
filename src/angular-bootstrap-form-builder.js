@@ -2,7 +2,7 @@
  /* global angular, $ */
 'use strict';
 
-var app = angular.module( 'ardroz.formBuilder', []);
+var app = angular.module( 'renderteam.formBuilder', []);
 app.directive( 'formElement', formElement );
 app.directive( 'formBuilder', formBuilder );
 
