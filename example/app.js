@@ -1,4 +1,4 @@
-var app = angular.module( 'Example', ['ardroz.formBuilder']);
+var app = angular.module( 'Example', ['renderteam.formBuilder']);
 
 app.controller( 'Main', main );
 main.$inject = ['$scope'];

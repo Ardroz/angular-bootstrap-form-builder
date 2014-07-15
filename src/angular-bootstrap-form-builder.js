@@ -33,7 +33,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'textarea_input',
                 label: 'Área de texto',
-                placeholder: 'Pista'
+                placeholder: 'Pistda'
               });
             break;
           case 'prepend_text_input':
