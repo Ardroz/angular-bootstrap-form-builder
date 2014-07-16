@@ -64,6 +64,16 @@ function formBuilder ( templateCache ) {
                 radios: []
               });
             break;
+          case 'prepend_checkbox_text_input':
+            scope.form.inputs.push(
+              {
+                type: 'prepend_checkbox_text_input',
+                input_type: 'text',
+                label: 'Texto bouch',
+                prepend: 'BO',
+                placeholder: 'Pista'
+              });
+            break;
         }
       };
     }
