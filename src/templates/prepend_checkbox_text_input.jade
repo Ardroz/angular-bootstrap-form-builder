@@ -15,9 +15,12 @@ doctype html
         ) *
       .col-md-7
         .input-group
-          span.input-group-addon(
-            ng-bind = 'input.prepend'
-          )
+          span.input-group-addon
+            .checkbox-form
+              input(
+                type = 'checkbox'
+                name = 'checkbox-form'
+              )
           input.form-control(
             type = '{{input.input_type}}'
             placeholder = '{{input.placeholder}}'
@@ -40,13 +43,6 @@ doctype html
         input.form-control(
           placeholder = 'Etiqueta'
           ng-model = 'input.label'
-        )
-    .form-group
-      label.col-sm-3.control-label Prefix
-      .col-sm-9
-        input.form-control(
-          placeholder = 'Prefijo'
-          ng-model = 'input.prepend'
         )
     .form-group
       label.col-sm-3.control-label Pis

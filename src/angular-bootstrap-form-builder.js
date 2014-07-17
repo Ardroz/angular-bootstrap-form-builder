@@ -56,22 +56,22 @@ function formBuilder ( templateCache ) {
                 placeholder: 'Pista'
               });
             break;
+          case 'prepend_checkbox_text_input':
+            scope.form.inputs.push(
+              {
+                type: 'prepend_checkbox_text_input',
+                input_type: 'text',
+                label: 'Texto con check box prefijo',
+                //prepend: 'BO',
+                placeholder: 'Elemento'
+              });
+            break;
           case 'inline_radios':
             scope.form.inputs.push(
               {
                 type: 'inline_radios',
                 label: 'Radios en línea',
                 radios: []
-              });
-            break;
-          case 'prepend_checkbox_text_input':
-            scope.form.inputs.push(
-              {
-                type: 'prepend_checkbox_text_input',
-                input_type: 'text',
-                label: 'Texto bouch',
-                prepend: 'BO',
-                placeholder: 'Pista'
               });
             break;
         }
