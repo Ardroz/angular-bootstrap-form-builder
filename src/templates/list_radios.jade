@@ -10,14 +10,14 @@ doctype html
         label(
           ng-bind = 'input.label'
         )
-      .col-md-7
+      .col-md-3
         label.radio-inline(
           ng-repeat = 'radio in input.radios'
         )
           input(
             value = '{{radio.value}}',
             type = 'radio',
-            name = 'radios{{input.radios.length}}'
+            name = 'radios-{{input.radios.length}}'
           )
           span(
             ng-bind = 'radio.label'

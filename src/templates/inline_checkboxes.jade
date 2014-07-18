@@ -11,16 +11,15 @@ doctype html
           ng-bind = 'input.label'
         )
       .col-md-7
-        label.radio-inline(
-          ng-repeat = 'radio in input.radios'
+        label.checkbox-inline(
+          ng-repeat = 'checkbox in input.checkboxes'
         )
           input(
-            value = '{{radio.value}}',
-            type = 'radio',
-            name = 'radios{{input.radios.length}}'
+            value = '{{checkbox.value}}'
+            type = 'checkbox'
           )
           span(
-            ng-bind = 'radio.label'
+            ng-bind = 'checkbox.label'
           )
 
   form.form-horizontal.col-md-6.form-element-editable(
@@ -40,32 +39,32 @@ doctype html
           ng-model = 'input.label'
           placeholder = 'Etiqueta'
         )
-    #radios.panel-group
+    #checkboxes.panel-group
       .panel.panel-default(
-        ng-repeat = 'radio in input.radios'
+        ng-repeat = 'checkbox in input.checkboxes'
       )
         .panel-heading.pointer(
-          data-parent = '#radios'
-          data-target = '#radio{{$index}}'
+          data-parent = '#checkboxes'
+          data-target = '#checkbox{{$index}}'
           data-toggle = 'collapse'
         )
           h4.panel-title
             a Radio {{ $index + 1 }}
         .panel-collapse.collapse(
-          id = 'radio{{$index}}'
+          id = 'checkbox{{$index}}'
         )
           .panel-body
             label.col-sm-3.control-label Etiqueta
             .col-sm-9
               input.form-control(
-                ng-model = 'radio.label'
+                ng-model = 'checkbox.label'
                 placeholder = 'Etiqueta'
               )
             label.col-sm-3.control-label Valor
             .col-sm-9
               input.form-control(
                 placeholder = 'Valor'
-                ng-model = 'radio.value'
+                ng-model = 'checkbox.value'
               )
           .panel-footer
             button.btn.btn-danger.btn-block(
