@@ -13,25 +13,28 @@ doctype html
         label(
           ng-show = 'input.required'
         ) *
-      .col-md-7
-        .control-group
-          .controls
-            .input-append
-              input.form-control(
-                type = '{{input.input_type}}'
-                placeholder = '{{input.placeholder}}'
-              )
-            .btn-group
-              button.btn.dropdown-toggle(data-toggle='dropdown')
-                ='{{input.button_text}}'
-                span.caret
-              ul.dropdown-menu
-                li
-                  a(href='#') Option one
-                li
-                  a(href='#') Option two
-                li
-                  a(href='#') Option three
+      .col-lg-7
+        .input-group
+          .input-append
+            input.form-control(
+              type = '{{input.input_type}}'
+              placeholder = '{{input.placeholder}}'
+            )
+          .input-group-btn
+            button.btn.btn-default.dropdown-toggle(
+              type='button', 
+              data-toggle='dropdown'
+            )
+              ='{{input.button_text}}'
+              span.caret
+            ul.dropdown-menu
+              li
+                a(href= '#') 
+                  = '{{input.options}}'
+              li
+                a(href='#') Option two
+              li
+                a(href='#') Option three
       p.clearfix
 
   form.form-horizontal.col-md-6.form-element-editable(
@@ -65,6 +68,16 @@ doctype html
           ng-model = 'input.input_type'
           ng-options = 'input.value as input.label for input in inputTypes'
         )
+    .form-group
+      label.col-sm-3.control-label Opciones
+      .col-sm-9
+        textarea#buttonoptions.field(
+          data-type='textarea-split', 
+          style='min-height: 200px'
+        )
+          | {{input.options}}
+          | Option two
+          | Option three
     .form-group
       .col-sm-offset-3.col-sm-10
           .checkbox

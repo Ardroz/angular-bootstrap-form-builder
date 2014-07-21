@@ -81,7 +81,8 @@ function formBuilder ( templateCache ) {
                 input_type: 'text',
                 label: 'Lista Desplegble',
                 placeholder: 'Items',
-                button_text: 'ItemSelec'
+                button_text: 'ItemSelec',
+                options: 'Opcion 1'
               });
             break;
           case 'inline_radios':
