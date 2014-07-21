@@ -15,16 +15,16 @@ doctype html
         ) *
       .col-md-7
         .input-group
-          span.input-group-addon
-            .checkbox-form
-              input(
-                type = 'checkbox'
-                name = 'checkbox-form-prepend'
-              )
           input.form-control(
             type = '{{input.input_type}}'
             placeholder = '{{input.placeholder}}'
           )
+          span.input-group-addon
+            .checkbox-form
+              input(
+                type = 'checkbox'
+                name = 'checkbox-form-append'
+              )
       p.clearfix
 
   form.form-horizontal.col-md-6.form-element-editable(

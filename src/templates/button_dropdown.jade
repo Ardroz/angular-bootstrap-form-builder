@@ -14,17 +14,24 @@ doctype html
           ng-show = 'input.required'
         ) *
       .col-md-7
-        .input-group
-          span.input-group-addon
-            .checkbox-form
-              input(
-                type = 'checkbox'
-                name = 'checkbox-form-prepend'
+        .control-group
+          .controls
+            .input-append
+              input.form-control(
+                type = '{{input.input_type}}'
+                placeholder = '{{input.placeholder}}'
               )
-          input.form-control(
-            type = '{{input.input_type}}'
-            placeholder = '{{input.placeholder}}'
-          )
+            .btn-group
+              button.btn.dropdown-toggle(data-toggle='dropdown')
+                ='{{input.button_text}}'
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href='#') Option one
+                li
+                  a(href='#') Option two
+                li
+                  a(href='#') Option three
       p.clearfix
 
   form.form-horizontal.col-md-6.form-element-editable(

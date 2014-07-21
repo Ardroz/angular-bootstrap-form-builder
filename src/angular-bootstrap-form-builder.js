@@ -62,8 +62,26 @@ function formBuilder ( templateCache ) {
                 type: 'prepend_checkbox_text_input',
                 input_type: 'text',
                 label: 'Texto con check box prefijo',
-                //prepend: 'BO',
                 placeholder: 'Elemento'
+              });
+            break;
+          case 'append_checkbox_text_input':
+            scope.form.inputs.push(
+              {
+                type: 'append_checkbox_text_input',
+                input_type: 'text',
+                label: 'Texto con check box prefijo',
+                placeholder: 'Elemento'
+              });
+            break;
+          case 'button_dropdown':
+            scope.form.inputs.push(
+              {
+                type: 'button_dropdown',
+                input_type: 'text',
+                label: 'Lista Desplegble',
+                placeholder: 'Items',
+                button_text: 'ItemSelec'
               });
             break;
           case 'inline_radios':
