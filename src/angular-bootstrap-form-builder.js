@@ -88,7 +88,8 @@ function formBuilder ( templateCache ) {
                 type: 'inline_checkboxes',
                 label: 'Checks en línea',
                 checkboxes: []
-              });
+              }
+            );
             break;
           case 'list_checkboxes':
             scope.form.inputs.push(
@@ -98,14 +99,42 @@ function formBuilder ( templateCache ) {
                 checkboxes: []
               });
             break;
-          case 'insert_button':
+          case 'append_input_buttons':
             scope.form.inputs.push(
               {
-                type: 'button',
-                value: 'input_value_button',
-                label: 'input_label_button' ? 'input_label_button' : 'btn btn-default',
-                size: 'input_size_button' ? 'input_size_button' : 'btn btn-default',
+                type: 'append_input_buttons',
+                value: 'Button',
+                class: 'btn-default',
+                size: 'btn-default',
+                label: 'Inline Button'
               });
+            break;
+          case 'inline_double_botton':
+            scope.form.inputs.push({
+                type: 'inline_double_botton',
+                buttons:[
+                  {
+                    value: 'Button',
+                    class: 'btn-default',
+                    size: 'btn-default',
+                    label: 'Inline Button'
+                  },
+                  {
+                    value: 'Button',
+                    class: 'btn-default',
+                    size: 'btn-default',
+                    label: 'Inline Button'
+                  }
+                ]
+              });
+            break;
+          case 'inline_file_button':
+            scope.form.inputs.push(
+              {
+                type: 'inline_file_button',
+                value: 'Button'
+              });
+            console.log(scope.form.inputs);
             break;
         }
       };
@@ -145,6 +174,14 @@ function formElement ( http, templateCache, compile, parse ) {
         { label: 'Número', value: 'number' },
         { label: 'Semana', value: 'week' },
         { label: 'Texto', value: 'text' }
+      ];
+
+      scope.inputButtonTypes = [
+        { label: 'Succes', value: 'btn-success' },
+        { label: 'Danger', value: 'btn-danger' },
+        { label: 'Info', value: 'btn-info' },
+        { label: 'Default', value: 'btn-default' },
+        { label: 'Warning', value: 'btn-warning' }
       ];
 
       scope.addRadioOrCheckbox = function () {

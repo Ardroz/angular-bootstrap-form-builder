@@ -11,6 +11,11 @@ doctype html
         data-target = '#checkboxes'
         data-toggle = 'tab'
       ) Radios / Checkboxes
+    li
+      a(
+        data-target = '#buttons'
+        data-toggle = 'tab'
+      ) Buttons
   .tab-content
     #inputs.tab-pane.fade.in.active
       br
@@ -18,50 +23,59 @@ doctype html
         ng-click = 'insert("text_input")'
       )
         span Campo:&nbsp;
-        input( disabled )
       |&nbsp;
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("textarea_input")'
       )
         span Área de texto:&nbsp;
-        input( disabled )
       |&nbsp;
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("prepend_text_input")'
       )
         span Campo con prefijo:&nbsp;
-        input( disabled )
       |&nbsp;
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("append_text_input")'
       )
         span Campo con postfijo:&nbsp;
-        input( disabled )
     #checkboxes.tab-pane.fade
       br
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("inline_radios")'
       )
         span Radios en línea:&nbsp;
-        input( disabled )
       |&nbsp;
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("list_radios")'
       )
         span Radios en lista:&nbsp;
-        input( disabled )
       |&nbsp;
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("inline_checkboxes")'
       )
         span Checkboxes en línea:&nbsp;
-        input( disabled )
       |&nbsp;
       span.label.label-default.form-builder-preview.pointer(
         ng-click = 'insert("list_checkboxes")'
       )
         span Checkboxes en lista:&nbsp;
-        input( disabled )
+    #buttons.tab-pane.fade
+      br
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("append_input_buttons")'
+      )
+        span Botón&nbsp;
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("inline_double_botton")'
+      )
+        span Doble Botón&nbsp;
+      |&nbsp;
+      span.label.label-default.form-builder-preview.pointer(
+        ng-click = 'insert("inline_file_button")'
+      )
+        span File Botón&nbsp;
+      |&nbsp;
   br
   .col-md-10.center
     form(

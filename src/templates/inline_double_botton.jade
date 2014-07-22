@@ -1,0 +1,43 @@
+doctype html
+.col-md-12.form-element-container(
+  id = 'input{{index}}'
+)
+  .col-md-6
+    .form-group.form-element(
+      ng-click = 'input.editable = true'
+    )
+      .col-md-5.form-group
+        input.form-control(
+          type = 'button',
+          class = 'btn {{button.class}}',
+          value = '{{button.value}}',
+          ng-repeat = 'button in input.buttons'
+        )
+  form.form-horizontal.col-md-6.form-element-editable(
+    role = 'form'
+    ng-show = 'input.editable'
+  )
+    button.close(
+      aria-hidden = 'true'
+      ng-click = 'input.editable = false'
+      type = 'button'
+    ) &times;
+    br
+    div(ng-repeat = 'button in input.buttons')
+      .form-group
+        label.col-sm-3.control-label Valor Botón 1
+        .col-sm-9
+          input.form-control(
+            ng-model = 'button.value'
+            placeholder = 'Valor del botón'
+          )
+      .form-group
+        label.col-sm-3.control-label Tipo
+        .col-sm-9
+          select.form-control(
+            ng-model = 'button.class'
+            ng-options = 'input.value as input.label for input in inputButtonTypes'
+          )
+    button.btn.btn-block.btn-danger(
+      ng-click = 'remove()'
+    ) Eliminar
