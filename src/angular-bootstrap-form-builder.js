@@ -164,6 +164,14 @@ function formElement ( http, templateCache, compile, parse ) {
         }
       };
 
+      scope.removeOption = function () {
+        if ( (/select/g).test( this.$parent.input.type ) ) {
+          this.$parent.input.options.splice( this.$index, 1 );
+        } else {
+
+        }
+      };
+
       scope.removeRadioOrCheckbox = function () {
         if ( (/radio/g).test( this.$parent.input.type ) ) {
           this.$parent.input.radios.splice( this.$index, 1 );

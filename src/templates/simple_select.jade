@@ -18,9 +18,7 @@ doctype html
           .input-append
             select.form-control
               option(ng-repeat = 'select in input.options')
-                |{{select.label}}
-
-
+                | {{select.label}}
       p.clearfix
 
   form.form-horizontal.col-md-6.form-element-editable(
@@ -40,6 +38,32 @@ doctype html
           placeholder = 'Etiqueta'
           ng-model = 'input.label'
         )
+    #options.panel-group
+      .panel.panel-default(
+        ng-repeat = 'select in input.options'
+      )
+        .panel-heading.pointer(
+          data-parent = '#options'
+          data-target = '#option{{$index}}'
+          data-toggle = 'collapse'
+        )
+          h4.panel-title
+            a Opción {{ $index + 1 }}
+        .panel-collapse.collapse(
+          id = 'option{{$index}}'
+        )
+          .panel-body
+            label.col-sm-3.control-label Opción
+            .col-sm-9
+              input.form-control(
+                ng-model = 'select.label'
+                placeholder = 'Que Opción'
+              )
+          .panel-footer
+            button.btn.btn-danger.btn-block(
+              ng-click = 'removeOption()'
+            )
+              | Eliminar
     .form-group
       label.col-sm-3.control-label Opciones
       .col-lg-9
