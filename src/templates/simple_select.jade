@@ -1,0 +1,67 @@
+doctype html
+.col-md-12.form-element-container(
+  id = 'input{{index}}'
+)
+  .col-md-6
+    .form-group(
+      ng-click = 'input.editable = true'
+    )
+      span.col-md-5.control-label
+        label(
+          ng-bind = 'input.label'
+        )
+        label(
+          ng-show = 'input.required'
+        ) *
+      .col-lg-7
+        .input-group
+          .input-append
+            select.form-control
+              option {{input.options}}
+              option 2
+              option 3
+              option 4
+              option 5
+
+
+      p.clearfix
+
+  form.form-horizontal.col-md-6.form-element-editable(
+    role = 'form'
+    ng-show = 'input.editable'
+  )
+    button.close(
+      type = 'button'
+      aria-hidden = 'true'
+      ng-click = 'input.editable = false'
+    ) &times;
+    br
+    .form-group
+      label.col-sm-3.control-label Etiqueta
+      .col-sm-9
+        input.form-control(
+          placeholder = 'Etiqueta'
+          ng-model = 'input.label'
+        )
+    .form-group
+      label.col-sm-3.control-label Opciones
+      .col-sm-9
+        textarea#buttonoptions.field(
+          data-type='textarea-split', 
+          style='min-height: 200px'
+        )
+          | {{input.options}}
+          | Option two
+          | Option three
+    .form-group
+      .col-sm-offset-3.col-sm-10
+          .checkbox
+            label
+              input(
+                type = 'checkbox'
+                ng-model = 'input.required'
+              )
+            |Requerido
+    button.btn.btn-block.btn-danger(
+      ng-click = 'remove()'
+    ) Eliminar

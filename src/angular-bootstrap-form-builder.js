@@ -93,6 +93,15 @@ function formBuilder ( templateCache ) {
                 radios: []
               });
             break;
+          case 'simple_select':
+            scope.form.inputs.push(
+              {
+                type: 'simple_select',
+                input_type: 'text',
+                label: 'Seleccionar',
+                options: 'Opcion 1'
+              });
+            break;
         }
       };
     }
