@@ -184,6 +184,13 @@ function formElement ( http, templateCache, compile, parse ) {
         { label: 'Warning', value: 'btn-warning' }
       ];
 
+      scope.inputButtonSizes = [
+        { label: 'Grande', value: 'btn-lg' },
+        { label: 'Normal', value: '' },
+        { label: 'Pequeño', value: 'btn-sm' },
+        { label: 'Muy Perqueño', value: 'btn-xs' }
+      ];
+
       scope.addRadioOrCheckbox = function () {
         if ( (/radio/g).test( this.input.type ) ) {
           this.input.radios.push({

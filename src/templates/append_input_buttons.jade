@@ -7,10 +7,9 @@ doctype html
       ng-click = 'input.editable = true'
     )
       .col-md-5
-        .input-group
-          input.form-control(
+          input.input-control(
             type = 'button',
-            class = 'btn {{input.class}}',
+            class = 'btn {{input.class}} {{input.size}}',
             value = '{{input.value}}'
           )
           p.clearfix
@@ -25,7 +24,7 @@ doctype html
     ) &times;
     br
     .form-group
-      label.col-sm-3.control-label Valor
+      label.col-sm-3.control-label Label
       .col-sm-9
         input.form-control(
           ng-model = 'input.value'
@@ -37,6 +36,13 @@ doctype html
         select.form-control(
           ng-model = 'input.class'
           ng-options = 'input.value as input.label for input in inputButtonTypes'
+        )
+    .form-group
+      label.col-sm-3.control-label Tamaño
+      .col-sm-9
+        select.form-control(
+          ng-model = 'input.size'
+          ng-options = 'input.value as input.label for input in inputButtonSizes'
         )
     button.btn.btn-block.btn-danger(
       ng-click = 'remove()'

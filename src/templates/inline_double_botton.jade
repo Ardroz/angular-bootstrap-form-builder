@@ -6,10 +6,10 @@ doctype html
     .form-group.form-element(
       ng-click = 'input.editable = true'
     )
-      .col-md-5.form-group
-        input.form-control(
+      .col-md-5
+        input.btn(
           type = 'button',
-          class = 'btn {{button.class}}',
+          class = '{{button.class}}',
           value = '{{button.value}}',
           ng-repeat = 'button in input.buttons'
         )
@@ -30,6 +30,13 @@ doctype html
           input.form-control(
             ng-model = 'button.value'
             placeholder = 'Valor del botón'
+          )
+      .form-group
+        label.col-sm-3.control-label Tipo
+        .col-sm-9
+          select.form-control(
+            ng-model = 'button.class'
+            ng-options = 'input.value as input.label for input in inputButtonTypes'
           )
       .form-group
         label.col-sm-3.control-label Tipo
