@@ -17,11 +17,8 @@ doctype html
         .input-group
           .input-append
             select.form-control
-              option {{input.options}}
-              option 2
-              option 3
-              option 4
-              option 5
+              option(ng-repeat = 'select in input.options')
+                |{{select.label}}
 
 
       p.clearfix
@@ -45,14 +42,16 @@ doctype html
         )
     .form-group
       label.col-sm-3.control-label Opciones
-      .col-sm-9
-        textarea#buttonoptions.field(
-          data-type='textarea-split', 
-          style='min-height: 200px'
-        )
-          | {{input.options}}
-          | Option two
-          | Option three
+      .col-lg-9
+        .input-group
+          input.form-control(
+            type= 'text',
+            ng-model = 'input.labelOption'
+          )
+          span.input-group-addon
+            button.btn.btn-success.btn-xs(
+              ng-click= 'addOptions()',
+            ) Agregar
     .form-group
       .col-sm-offset-3.col-sm-10
           .checkbox

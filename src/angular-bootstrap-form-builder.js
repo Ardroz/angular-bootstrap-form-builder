@@ -99,7 +99,8 @@ function formBuilder ( templateCache ) {
                 type: 'simple_select',
                 input_type: 'text',
                 label: 'Seleccionar',
-                options: 'Opcion 1'
+                options: [],
+                labelOption: 'Opciones'
               });
             break;
         }
@@ -147,6 +148,16 @@ function formElement ( http, templateCache, compile, parse ) {
           this.input.radios.push({
             label: 'Radio ' + ( this.input.radios.length + 1 ),
             value: this.input.radios.length + 1
+          });
+        } else {
+
+        }
+      };
+
+      scope.addOptions = function () {
+        if ( (/select/g).test( this.input.type ) ) {
+          this.input.options.push({
+            label: this.input.labelOption
           });
         } else {
 
