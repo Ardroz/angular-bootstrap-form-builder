@@ -45,14 +45,14 @@ doctype html
         ng-repeat = 'radio in input.radios'
       )
         .panel-heading.pointer(
-          data-parent = '#radios'
-          data-target = '#radio{{$index}}'
+          data-parent = '#radios{{input.id}}'
+          data-target = '#radio{{input.id}}{{$index}}'
           data-toggle = 'collapse'
         )
           h4.panel-title
             a Radio {{ $index + 1 }}
         .panel-collapse.collapse(
-          id = 'radio{{$index}}'
+          id = 'radio{{input.id}}{{$index}}'
         )
           .panel-body
             label.col-sm-3.control-label Etiqueta

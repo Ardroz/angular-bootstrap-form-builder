@@ -46,13 +46,13 @@ doctype html
       )
         .panel-heading.pointer(
           data-parent = '#radios'
-          data-target = '#radio{{$index}}'
+          data-target = '#radio{{input.id}}{{$index}}'
           data-toggle = 'collapse'
         )
           h4.panel-title
             a Radio {{ $index + 1 }}
         .panel-collapse.collapse(
-          id = 'radio{{$index}}'
+          id = 'radio{{input.id}}{{$index}}'
         )
           .panel-body
             label.col-sm-3.control-label Etiqueta

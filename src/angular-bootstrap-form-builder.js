@@ -18,6 +18,7 @@ function formBuilder ( templateCache ) {
       scope.editable = {};
 
       scope.insert = function ( type ) {
+        console.log('ENRIQUE',scope);
         switch ( type ) {
           case 'text_input':
             scope.form.inputs.push(
@@ -71,6 +72,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'inline_radios',
                 label: 'Radios en línea',
+                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
                 radios: []
               });
             break;
@@ -79,6 +81,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'list_radios',
                 label: 'Radios en lista',
+                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
                 radios: []
               });
             break;
@@ -87,6 +90,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'inline_checkboxes',
                 label: 'Checks en línea',
+                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
                 checkboxes: []
               }
             );
@@ -96,6 +100,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'list_checkboxes',
                 label: 'Checks en lista',
+                id: scope.fomr.inputs.length ? 0 : scope.fomr.inputs.length,
                 checkboxes: []
               });
             break;
@@ -116,13 +121,13 @@ function formBuilder ( templateCache ) {
                   {
                     value: 'Button',
                     class: 'btn-default',
-                    size: 'btn-default',
+                    size: '',
                     label: 'Inline Button'
                   },
                   {
                     value: 'Button',
                     class: 'btn-default',
-                    size: 'btn-default',
+                    size: '',
                     label: 'Inline Button'
                   }
                 ]
@@ -155,7 +160,6 @@ function formElement ( http, templateCache, compile, parse ) {
     link: function ( scope, element, attrs ){
       scope.input.editable = false;
       scope.input.required = false;
-
       var template = templateCache.get('templates/' + scope.input.type + '.html');
       element = element.replaceWith( compile( template )( scope ) );
 
@@ -211,7 +215,7 @@ function formElement ( http, templateCache, compile, parse ) {
         if ( (/radio/g).test( this.$parent.input.type ) ) {
           this.$parent.input.radios.splice( this.$index, 1 );
         } else {
-          this.$parent.input.checkboxe.splice( this.$index, 1 );
+          this.$parent.input.checkboxes.splice( this.$index, 1 );
         }
       };
     }

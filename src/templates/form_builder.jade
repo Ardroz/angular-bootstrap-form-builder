@@ -88,5 +88,6 @@ doctype html
         form = 'form'
         input = 'input'
         index = '$index'
-        ng-repeat = 'input in form.inputs'
-      )
+        ng-repeat = 'input in form.inputs',
+        ng-init = 'outterIndex = $index'
+      ){{outterIndex}}

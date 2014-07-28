@@ -44,14 +44,14 @@ doctype html
         ng-repeat = 'checkbox in input.checkboxes'
       )
         .panel-heading.pointer(
-          data-parent = '#checkboxes'
-          data-target = '#checkbox{{$index}}'
+          data-parent = '#checkboxes{{input.id}}'
+          data-target = '#checkbox{{input.id}}{{$index}}'
           data-toggle = 'collapse'
         )
           h4.panel-title
             a Radio {{ $index + 1 }}
         .panel-collapse.collapse(
-          id = 'checkbox{{$index}}'
+          id = 'checkbox{{input.id}}{{$index}}'
         )
           .panel-body
             label.col-sm-3.control-label Etiqueta
