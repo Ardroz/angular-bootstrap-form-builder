@@ -57,14 +57,33 @@ function formBuilder ( templateCache ) {
                 placeholder: 'Pista'
               });
             break;
-          case 'append_text_input':
+          case 'prepend_checkbox_text_input':
             scope.form.inputs.push(
               {
-                type: 'append_text_input',
+                type: 'prepend_checkbox_text_input',
                 input_type: 'text',
-                label: 'Texto postfijo',
-                append: 'M.N.',
-                placeholder: 'Pista'
+                label: 'Texto con check box prefijo',
+                placeholder: 'Elemento'
+              });
+            break;
+          case 'append_checkbox_text_input':
+            scope.form.inputs.push(
+              {
+                type: 'append_checkbox_text_input',
+                input_type: 'text',
+                label: 'Texto con check box prefijo',
+                placeholder: 'Elemento'
+              });
+            break;
+          case 'button_dropdown':
+            scope.form.inputs.push(
+              {
+                type: 'button_dropdown',
+                input_type: 'text',
+                label: 'Lista Desplegble',
+                placeholder: 'Items',
+                button_text: 'ItemSelec',
+                options: 'Opcion 1'
               });
             break;
           case 'inline_radios':
@@ -141,6 +160,16 @@ function formBuilder ( templateCache ) {
               });
             console.log(scope.form.inputs);
             break;
+          case 'simple_select':
+            scope.form.inputs.push(
+              {
+                type: 'simple_select',
+                input_type: 'text',
+                label: 'Seleccionar',
+                options: [],
+                labelOption: 'Opciones'
+              });
+            break;
         }
       };
     }
@@ -208,6 +237,24 @@ function formElement ( http, templateCache, compile, parse ) {
             value: this.input.checkboxes.length + 1,
             name : this.input.checkboxes.name//check for the name is dinamyc or static
           });
+        }
+      };
+
+      scope.addOptions = function () {
+        if ( (/select/g).test( this.input.type ) ) {
+          this.input.options.push({
+            label: this.input.labelOption
+          });
+        } else {
+
+        }
+      };
+
+      scope.removeOption = function () {
+        if ( (/select/g).test( this.$parent.input.type ) ) {
+          this.$parent.input.options.splice( this.$index, 1 );
+        } else {
+
         }
       };
 

@@ -1,0 +1,90 @@
+doctype html
+.col-md-12.form-element-container(
+  id = 'input{{index}}'
+)
+  .col-md-6
+    .form-group(
+      ng-click = 'input.editable = true'
+    )
+      span.col-md-5.control-label
+        label(
+          ng-bind = 'input.label'
+        )
+        label(
+          ng-show = 'input.required'
+        ) *
+      .col-lg-7
+        .input-group
+          .input-append
+            select.form-control
+              option(ng-repeat = 'select in input.options')
+                | {{select.label}}
+      p.clearfix
+
+  form.form-horizontal.col-md-6.form-element-editable(
+    role = 'form'
+    ng-show = 'input.editable'
+  )
+    button.close(
+      type = 'button'
+      aria-hidden = 'true'
+      ng-click = 'input.editable = false'
+    ) &times;
+    br
+    .form-group
+      label.col-sm-3.control-label Etiqueta
+      .col-sm-9
+        input.form-control(
+          placeholder = 'Etiqueta'
+          ng-model = 'input.label'
+        )
+    #options.panel-group
+      .panel.panel-default(
+        ng-repeat = 'select in input.options'
+      )
+        .panel-heading.pointer(
+          data-parent = '#options'
+          data-target = '#option{{$index}}'
+          data-toggle = 'collapse'
+        )
+          h4.panel-title
+            a Opción {{ $index + 1 }}
+        .panel-collapse.collapse(
+          id = 'option{{$index}}'
+        )
+          .panel-body
+            label.col-sm-3.control-label Opción
+            .col-sm-9
+              input.form-control(
+                ng-model = 'select.label'
+                placeholder = 'Que Opción'
+              )
+          .panel-footer
+            button.btn.btn-danger.btn-block(
+              ng-click = 'removeOption()'
+            )
+              | Eliminar
+    .form-group
+      label.col-sm-3.control-label Opciones
+      .col-lg-9
+        .input-group
+          input.form-control(
+            type= 'text',
+            ng-model = 'input.labelOption'
+          )
+          span.input-group-addon
+            button.btn.btn-success.btn-xs(
+              ng-click= 'addOptions()',
+            ) Agregar
+    .form-group
+      .col-sm-offset-3.col-sm-10
+          .checkbox
+            label
+              input(
+                type = 'checkbox'
+                ng-model = 'input.required'
+              )
+            |Requerido
+    button.btn.btn-block.btn-danger(
+      ng-click = 'remove()'
+    ) Eliminar
