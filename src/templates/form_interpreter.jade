@@ -3,18 +3,21 @@ form(
   ng-submit = 'save(values)'
   name = 'yolo'
 )
-  h3(
-    ng-bind = 'form.name'
-  )
-  hr
-  form-element-interpreter(
-    form = 'form'
-    values = 'values'
-    index = '$index'
-    input = 'input'
-    ng-repeat = 'input in form.inputs'
-  )
+  .col-md-2
+  .col-md-8
+    h3(
+      ng-bind = 'form.name'
+    )
+    hr
+    form-element-interpreter(
+      form = 'form'
+      values = 'values'
+      index = '$index'
+      input = 'input'
+      ng-repeat = 'input in form.inputs'
+    )
 
-  button.btn.btn-success(
-    type = 'submit'
-  ) Enviar
+    button.btn.btn-success(
+      type = 'submit'
+    ) Enviar
+  .col-md-2

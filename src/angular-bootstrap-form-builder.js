@@ -35,7 +35,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'textarea_input',
                 label: 'Área de texto',
-                placeholder: 'Pistda'
+                placeholder: 'Pista'
               });
             break;
           case 'prepend_text_input':
@@ -120,7 +120,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'list_checkboxes',
                 label: 'Checks en lista',
-                id: scope.fomr.inputs.length ? 0 : scope.fomr.inputs.length,
+                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
                 checkboxes: []
               });
             break;
@@ -284,7 +284,7 @@ function formElement ( templateCache, compile ) {
       scope.addOptions = function () {
         if ( (/select/g).test( this.input.type ) ) {
           this.input.options.push({
-            label: this.input.labelOption
+            label: this.input.labelOption,
           });
         } else {
 

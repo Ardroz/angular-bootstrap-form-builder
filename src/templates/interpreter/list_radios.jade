@@ -1,0 +1,21 @@
+doctype html
+.form-group
+  label(
+    ng-bind = 'input.label'
+  )
+  label(
+    ng-show = 'input.required'
+  ) *
+  | &nbsp
+  label.radio(
+    ng-repeat = 'radio in input.radios'
+  )
+    input(
+      value = '{{radio.value}}',
+      type = 'radio',
+      ng-model = 'values[generateInputName(input)]'
+    )
+    span(
+      ng-bind = 'radio.label'
+    )
+    | &nbsp

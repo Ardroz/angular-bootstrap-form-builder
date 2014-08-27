@@ -1,0 +1,20 @@
+doctype html
+.form-group
+  label(
+    ng-bind = 'input.label'
+  )
+  label(
+    ng-show = 'input.required'
+  ) *
+  | &nbsp
+  label.checkbox(
+    ng-repeat = 'checkbox in input.checkboxes'
+  )
+    input(
+      value = '{{checkbox.value}}'
+      type = 'checkbox'
+      ng-model = 'values[generateInputName(input)][$index]'
+    )
+    span(
+      ng-bind = 'checkbox.label'
+    )

@@ -15,40 +15,41 @@ doctype html
       textarea.form-control(
         placeholder = '{{input.placeholder}}'
       )
-
-  form.form-horizontal.col-md-6.form-element-editable(
+  .col-md-6.form-element-editable(
     ng-show = 'input.editable'
-    role = 'form'
   )
-    button.close(
-      aria-hidden = 'true'
-      ng-click = 'input.editable = false'
-      type = 'button'
-    ) &times;
-    br
-    .form-group
-      label.col-sm-3.control-label Etiqueta
-      .col-sm-9
-        input.form-control(
-          ng-model = 'input.label'
-          placeholder = 'Etiqueta'
-        )
-    .form-group
-      label.col-sm-3.control-label Pista
-      .col-sm-9
-        input.form-control(
-          ng-model = 'input.placeholder'
-          placeholder = 'Pista'
-        )
-    .form-group
-      .col-sm-offset-3.col-sm-10
-          .checkbox
-            label
-              input(
-                ng-model = 'input.required'
-                type = 'checkbox'
-              )
-              |Requerido
+    form.form-horizontal(
+      role = 'form'
+    )
+      button.close(
+        aria-hidden = 'true'
+        ng-click = 'input.editable = false'
+        type = 'button'
+      ) &times;
+      br
+      .form-group
+        label.col-sm-3.control-label Etiqueta
+        .col-sm-9
+          input.form-control(
+            ng-model = 'input.label'
+            placeholder = 'Etiqueta'
+          )
+      .form-group
+        label.col-sm-3.control-label Pista
+        .col-sm-9
+          input.form-control(
+            ng-model = 'input.placeholder'
+            placeholder = 'Pista'
+          )
+      .form-group
+        .col-sm-offset-3.col-sm-10
+            .checkbox
+              label
+                input(
+                  ng-model = 'input.required'
+                  type = 'checkbox'
+                )
+                |Requerido
     button.btn.btn-block.btn-danger(
       ng-click = 'remove()'
     ) Eliminar

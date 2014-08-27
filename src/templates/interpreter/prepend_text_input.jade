@@ -1,0 +1,18 @@
+doctype html
+.form-group
+  label(
+    ng-bind = 'input.label'
+  )
+  label(
+    ng-show = 'input.required'
+  ) *
+  .input-group
+    span.input-group-addon(
+      ng-bind = 'input.prepend'
+    )
+    input.form-control(
+      type = '{{input.input_type}}'
+      placeholder = '{{input.placeholder}}'
+      ng-model = 'values[generateInputName(input)]'
+      ng-required = 'input.required'
+    )

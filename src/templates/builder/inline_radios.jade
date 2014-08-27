@@ -22,60 +22,62 @@ doctype html
           span(
             ng-bind = 'radio.label'
           )
-
-  form.form-horizontal.col-md-6.form-element-editable(
+  .col-md-6.form-element-editable(
     ng-show = 'input.editable'
-    role = 'form'
   )
-    button.close(
-      aria-hidden = 'true'
-      ng-click = 'input.editable = false'
-      type = 'button'
-    ) &times;
-    br
-    .form-group
-      label.col-sm-3.control-label Etiqueta
-      .col-sm-9
-        input.form-control(
-          ng-model = 'input.label'
-          placeholder = 'Etiqueta'
+    form.form-horizontal(
+      role = 'form'
+    )
+      button.close(
+        aria-hidden = 'true'
+        ng-click = 'input.editable = false'
+        type = 'button'
+      ) &times;
+      br
+      .form-group
+        label.col-sm-3.control-label Etiqueta
+        .col-sm-9
+          input.form-control(
+            ng-model = 'input.label'
+            placeholder = 'Etiqueta'
+          )
+      #radios.panel-group
+        .panel.panel-default(
+          ng-repeat = 'radio in input.radios'
         )
-    #radios.panel-group
-      .panel.panel-default(
-        ng-repeat = 'radio in input.radios'
-      )
-        .panel-heading.pointer(
-          data-parent = '#radios'
-          data-target = '#radio{{input.id}}{{$index}}'
-          data-toggle = 'collapse'
-        )
-          h4.panel-title
-            a Radio {{ $index + 1 }}
-        .panel-collapse.collapse(
-          id = 'radio{{input.id}}{{$index}}'
-        )
-          .panel-body
-            label.col-sm-3.control-label Etiqueta
-            .col-sm-9
-              input.form-control(
-                ng-model = 'radio.label'
-                placeholder = 'Etiqueta'
+          .panel-heading.pointer(
+            data-parent = '#radios'
+            data-target = '#radio{{input.id}}{{$index}}'
+            data-toggle = 'collapse'
+          )
+            h4.panel-title
+              a Radio {{ $index + 1 }}
+          .panel-collapse.collapse(
+            id = 'radio{{input.id}}{{$index}}'
+          )
+            .panel-body
+              label.col-sm-3.control-label Etiqueta
+              .col-sm-9
+                input.form-control(
+                  ng-model = 'radio.label'
+                  placeholder = 'Etiqueta'
+                )
+              label.col-sm-3.control-label Valor
+              .col-sm-9
+                input.form-control(
+                  placeholder = 'Valor'
+                  ng-model = 'radio.value'
+                )
+            .panel-footer
+              button.btn.btn-danger(
+                ng-click = 'removeRadioOrCheckbox()'
               )
-            label.col-sm-3.control-label Valor
-            .col-sm-9
-              input.form-control(
-                placeholder = 'Valor'
-                ng-model = 'radio.value'
-              )
-          .panel-footer
-            button.btn.btn-danger.btn-block(
-              ng-click = 'removeRadioOrCheckbox()'
-            )
-              | Eliminar
+                | Eliminar
 
     button.pull-right.btn.btn-success(
       ng-click = 'addRadioOrCheckbox()'
     ) Agregar
+
     .form-group
       .col-sm-offset-3.col-sm-10
           .checkbox

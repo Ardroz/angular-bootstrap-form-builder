@@ -23,54 +23,55 @@ doctype html
             placeholder = '{{input.placeholder}}'
           )
       p.clearfix
-
-  form.form-horizontal.col-md-6.form-element-editable(
-    role = 'form'
+  .col-md-6.form-element-editable(
     ng-show = 'input.editable'
   )
-    button.close(
-      type = 'button'
-      aria-hidden = 'true'
-      ng-click = 'input.editable = false'
-    ) &times;
-    br
-    .form-group
-      label.col-sm-3.control-label Etiqueta
-      .col-sm-9
-        input.form-control(
-          placeholder = 'Etiqueta'
-          ng-model = 'input.label'
-        )
-    .form-group
-      label.col-sm-3.control-label Prefijo
-      .col-sm-9
-        input.form-control(
-          placeholder = 'Prefijo'
-          ng-model = 'input.prepend'
-        )
-    .form-group
-      label.col-sm-3.control-label Pista
-      .col-sm-9
-        input.form-control(
-          placeholder = 'Pista'
-          ng-model = 'input.placeholder'
-        )
-    .form-group
-      label.col-sm-3.control-label Tipo
-      .col-sm-9
-        select.form-control(
-          ng-model = 'input.input_type'
-          ng-options = 'input.value as input.label for input in inputTypes'
-        )
-    .form-group
-      .col-sm-offset-3.col-sm-10
-          .checkbox
-            label
-              input(
-                type = 'checkbox'
-                ng-model = 'input.required'
-              )
-            |Requerido
+    form.form-horizontal(
+      role = 'form'
+    )
+      button.close(
+        type = 'button'
+        aria-hidden = 'true'
+        ng-click = 'input.editable = false'
+      ) &times;
+      br
+      .form-group
+        label.col-sm-3.control-label Etiqueta
+        .col-sm-9
+          input.form-control(
+            placeholder = 'Etiqueta'
+            ng-model = 'input.label'
+          )
+      .form-group
+        label.col-sm-3.control-label Prefijo
+        .col-sm-9
+          input.form-control(
+            placeholder = 'Prefijo'
+            ng-model = 'input.prepend'
+          )
+      .form-group
+        label.col-sm-3.control-label Pista
+        .col-sm-9
+          input.form-control(
+            placeholder = 'Pista'
+            ng-model = 'input.placeholder'
+          )
+      .form-group
+        label.col-sm-3.control-label Tipo
+        .col-sm-9
+          select.form-control(
+            ng-model = 'input.input_type'
+            ng-options = 'input.value as input.label for input in inputTypes'
+          )
+      .form-group
+        .col-sm-offset-3.col-sm-10
+            .checkbox
+              label
+                input(
+                  type = 'checkbox'
+                  ng-model = 'input.required'
+                )
+              |Requerido
     button.btn.btn-block.btn-danger(
       ng-click = 'remove()'
     ) Eliminar
