@@ -14,6 +14,9 @@ doctype html
       value = '{{checkbox.value}}'
       type = 'checkbox'
       ng-model = 'values[generateInputName(input)][$index]'
+      ng-init = 'validateCheckbox(input,values)'
+      ng-required = 'validations[generateInputName(input)] && input.required'
+      ng-change = 'validateCheckbox(input,values)'
     )
     span(
       ng-bind = 'checkbox.label'

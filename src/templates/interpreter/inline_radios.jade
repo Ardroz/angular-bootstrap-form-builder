@@ -11,9 +11,12 @@ doctype html
     ng-repeat = 'radio in input.radios'
   )
     input(
+      ng-init = 'validateRadioButton(input,values)'
       value = '{{radio.value}}',
       type = 'radio',
       ng-model = 'values[generateInputName(input)]'
+      ng-required = 'validations[generateInputName(input)] && input.required'
+      ng-change = 'validateRadioButton(input,values)'
     )
     span(
       ng-bind = 'radio.label'

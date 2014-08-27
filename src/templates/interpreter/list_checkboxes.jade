@@ -10,10 +10,13 @@ doctype html
   label.checkbox(
     ng-repeat = 'checkbox in input.checkboxes'
   )
-    input(
+    input(validateCheckbox
       value = '{{checkbox.value}}'
       type = 'checkbox'
       ng-model = 'values[generateInputName(input)][$index]'
+      ng-init = 'validateCheckbox(input,values)'
+      ng-required = 'validations[generateInputName(input)] && input.required'
+      ng-change = 'validateCheckbox(input,values)'
     )
     span(
       ng-bind = 'checkbox.label'

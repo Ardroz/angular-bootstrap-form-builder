@@ -97,22 +97,22 @@ function templates( $templateCache ) {
 
 
   $templateCache.put('templates/interpreter/inline_checkboxes.html',
-    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"checkbox in input.checkboxes\" class=checkbox-inline><input value={{checkbox.value}} type=checkbox ng-model=values[generateInputName(input)][$index]><span ng-bind=checkbox.label></span></label></div>"
+    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"checkbox in input.checkboxes\" class=checkbox-inline><input value={{checkbox.value}} type=checkbox ng-model=values[generateInputName(input)][$index] ng-init=validateCheckbox(input,values) ng-required=\"validations[generateInputName(input)] &amp;&amp; input.required\" ng-change=validateCheckbox(input,values)><span ng-bind=checkbox.label></span></label></div>"
   );
 
 
   $templateCache.put('templates/interpreter/inline_radios.html',
-    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"radio in input.radios\" class=radio-inline><input value={{radio.value}} type=radio ng-model=values[generateInputName(input)]><span ng-bind=radio.label></span>&nbsp</label></div>"
+    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"radio in input.radios\" class=radio-inline><input ng-init=validateRadioButton(input,values) value={{radio.value}} type=radio ng-model=values[generateInputName(input)] ng-required=\"validations[generateInputName(input)] &amp;&amp; input.required\" ng-change=validateRadioButton(input,values)><span ng-bind=radio.label></span>&nbsp</label></div>"
   );
 
 
   $templateCache.put('templates/interpreter/list_checkboxes.html',
-    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"checkbox in input.checkboxes\" class=checkbox><input value={{checkbox.value}} type=checkbox ng-model=values[generateInputName(input)][$index]><span ng-bind=checkbox.label></span></label></div>"
+    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"checkbox in input.checkboxes\" class=checkbox><input validatecheckbox value={{checkbox.value}} type=checkbox ng-model=values[generateInputName(input)][$index] ng-init=validateCheckbox(input,values) ng-required=\"validations[generateInputName(input)] &amp;&amp; input.required\" ng-change=validateCheckbox(input,values)><span ng-bind=checkbox.label></span></label></div>"
   );
 
 
   $templateCache.put('templates/interpreter/list_radios.html',
-    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"radio in input.radios\" class=radio><input value={{radio.value}} type=radio ng-model=values[generateInputName(input)]><span ng-bind=radio.label></span>&nbsp</label></div>"
+    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label>&nbsp<label ng-repeat=\"radio in input.radios\" class=radio><input ng-init=validateRadioButton(input,values) value={{radio.value}} type=radio ng-model=values[generateInputName(input)] ng-required=\"validations[generateInputName(input)] &amp;&amp; input.required\" ng-change=validateRadioButton(input,values)><span ng-bind=radio.label></span>&nbsp</label></div>"
   );
 
 
@@ -122,7 +122,7 @@ function templates( $templateCache ) {
 
 
   $templateCache.put('templates/interpreter/simple_select.html',
-    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label><select ng-model=values[generateInputName(input)] ng-options=\"option.label as option.label for option in input.options\" required class=form-control></select></div>"
+    "<!DOCTYPE html><div class=form-group><label ng-bind=input.label></label><label ng-show=input.required>*</label><select ng-model=values[generateInputName(input)] ng-options=\"option.label as option.label for option in input.options\" ng-init=\"values[generateInputName(input)] === input.options[0]\" class=form-control></select></div>"
   );
 
 
