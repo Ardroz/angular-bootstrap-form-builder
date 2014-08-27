@@ -1,0 +1,20 @@
+doctype html
+form(
+  ng-submit = 'save(values)'
+  name = 'yolo'
+)
+  h3(
+    ng-bind = 'form.name'
+  )
+  hr
+  form-element-interpreter(
+    form = 'form'
+    values = 'values'
+    index = '$index'
+    input = 'input'
+    ng-repeat = 'input in form.inputs'
+  )
+
+  button.btn.btn-success(
+    type = 'submit'
+  ) Enviar

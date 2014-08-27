@@ -7,7 +7,22 @@
 
   </head>
   <body>
-    <form-builder form = 'form'></form-builder>
+    <ul class="nav nav-tabs" role="tablist">
+      <li><a href="#formBuilder" role="tab" data-toggle="tab">Builder</a></li>
+      <li><a href="#formInterpreter" role="tab" data-toggle="tab">Interpreter</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane" id="formBuilder">
+        <hr>
+        <form-builder form = 'form'></form-builder>
+      </div>
+      <div class="tab-pane" id="formInterpreter">
+        <hr>
+        <form-interpreter form = 'form' on-save = 'save( values )'></form-interpreter>
+      </div>
+    </div>
 
     <script src = '../bower_components/angular/angular.min.js'></script>
     <script src = '../bower_components/jquery/dist/jquery.min.js'></script>

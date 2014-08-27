@@ -108,13 +108,13 @@ doctype html
     form(
       name = '{{form.name}}'
     )
-      legend(
-        ng-bind = 'form.name'
+      input.form-control(
+        ng-model = 'form.name'
       )
       form-element(
         form = 'form'
-        input = 'input'
         index = '$index'
-        ng-repeat = 'input in form.inputs',
+        input = 'input'
         ng-init = 'outterIndex = $index'
-      ) {{outterIndex}}
+        ng-repeat = 'input in form.inputs'
+      )

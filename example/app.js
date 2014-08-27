@@ -7,4 +7,8 @@ function main ( scope ) {
       name: 'Formulario',
       inputs: []
     };
+
+  scope.save = function ( values ) {
+    console.log(values);
+  };
 }

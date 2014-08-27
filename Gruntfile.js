@@ -31,7 +31,7 @@ module.exports = function ( grunt ) {
             dest: 'build/templates/',
             ext: '.html',
             extDot: 'first'
-          },
+          }
         ],
       }
     },
@@ -54,7 +54,7 @@ module.exports = function ( grunt ) {
     ngtemplates:    {
       app:          {
         cwd:        'build',
-        src:        'templates/**.html',
+        src:        'templates/**/*.html',
         dest:       'build/templates/templates.js',
         options:    {
           bootstrap:  function ( module, script ) {

@@ -5,6 +5,8 @@
 var app = angular.module( 'renderteam.formBuilder', []);
 app.directive( 'formElement', formElement );
 app.directive( 'formBuilder', formBuilder );
+app.directive( 'formInterpreter', formInterpreter );
+app.directive( 'formElementInterpreter', formElementInterpreter );
 
 formBuilder.$inject = ['$templateCache'];
 function formBuilder ( templateCache ) {
@@ -18,7 +20,6 @@ function formBuilder ( templateCache ) {
       scope.editable = {};
 
       scope.insert = function ( type ) {
-        console.log('ENRIQUE',scope);
         switch ( type ) {
           case 'text_input':
             scope.form.inputs.push(
@@ -176,8 +177,48 @@ function formBuilder ( templateCache ) {
   };
 }
 
-formElement.$inject = ['$http', '$templateCache', '$compile', '$parse'];
-function formElement ( http, templateCache, compile, parse ) {
+formInterpreter.$inject = ['$templateCache'];
+function formInterpreter ( templateCache ) {
+  return {
+    restrict: 'E',
+    scope: {
+      form: '=',
+      onSave: '&'
+    },
+    template: templateCache.get('templates/form_interpreter.html'),
+    link: function ( scope, element, attrs ){
+      scope.values = {};
+
+      scope.save = function () {
+        scope.onSave({ values: scope.values});
+      };
+    }
+  };
+}
+
+formElementInterpreter.$inject = ['$templateCache', '$compile'];
+function formElementInterpreter ( templateCache, compile ) {
+  return {
+    restrict: 'E',
+    scope: {
+      values: '=',
+      form: '=',
+      input: '=',
+      index: '='
+    },
+    link: function ( scope, element, attrs ){
+      var template = templateCache.get('templates/interpreter/' + scope.input.type + '.html');
+      element = element.replaceWith( compile( template )( scope ) );
+
+      scope.generateInputName = function ( input ) {
+        return input.label.toLowerCase().replace(/\s/g, '_') + scope.index;
+      };
+    }
+  };
+}
+
+formElement.$inject = ['$templateCache', '$compile'];
+function formElement ( templateCache, compile ) {
   return {
     restrict: 'E',
     scope: {
@@ -189,7 +230,7 @@ function formElement ( http, templateCache, compile, parse ) {
     link: function ( scope, element, attrs ){
       scope.input.editable = false;
       scope.input.required = false;
-      var template = templateCache.get('templates/' + scope.input.type + '.html');
+      var template = templateCache.get('templates/builder/' + scope.input.type + '.html');
       element = element.replaceWith( compile( template )( scope ) );
 
       scope.remove = function () {
