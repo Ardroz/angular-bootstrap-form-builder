@@ -212,7 +212,8 @@ function formElementInterpreter ( templateCache, compile ) {
       scope.validations=[];
 
       scope.generateInputName = function ( input ) {
-        return input.label.toLowerCase().replace(/\s/g, '_') + scope.index;
+        return input.label.replace(/[^\w\s]/gi, '').toLowerCase().replace(/\s/g, '_') + scope.index;
+
       };
 
       scope.validateRadioButton = function  (input, values) {
@@ -222,7 +223,6 @@ function formElementInterpreter ( templateCache, compile ) {
       scope.validateCheckbox = function  (input, values) {
         var value = scope.values[scope.generateInputName(input)];
 
-        console.log( value);
         if ( value ) {
           scope.validations[scope.generateInputName(input)] = true;
           angular.forEach(value, function(value) {
