@@ -14,11 +14,11 @@ doctype html
           ng-show = 'input.required'
         ) *
       .col-lg-7
-        .input-group
-          .input-append
-            select.form-control
-              option(ng-repeat = 'select in input.options')
-                | {{select.label}}
+        select.form-control(
+          ng-model = 'ok'
+          ng-options = 'option.label for option in input.options'
+        )
+
       p.clearfix
 
   form.form-horizontal.col-md-6.form-element-editable(
@@ -38,44 +38,31 @@ doctype html
           placeholder = 'Etiqueta'
           ng-model = 'input.label'
         )
-    #options.panel-group
-      .panel.panel-default(
-        ng-repeat = 'select in input.options'
-      )
-        .panel-heading.pointer(
-          data-parent = '#options'
-          data-target = '#option{{$index}}'
-          data-toggle = 'collapse'
+      br
+      br
+      .input-group( ng-repeat = 'select in input.options')
+        input.form-control(
+          ng-model = 'input.options[$index].label'
+            type = 'text'
         )
-          h4.panel-title
-            a Opción {{ $index + 1 }}
-        .panel-collapse.collapse(
-          id = 'option{{$index}}'
-        )
-          .panel-body
-            label.col-sm-3.control-label Opción
-            .col-sm-9
-              input.form-control(
-                ng-model = 'select.label'
-                placeholder = 'Que Opción'
-              )
-          .panel-footer
-            button.btn.btn-danger.btn-block(
-              ng-click = 'removeOption()'
-            )
-              | Eliminar
+        span.input-group-btn
+          button.btn.btn-danger(
+            type = 'button'
+            ng-click = 'removeOption()'
+          ) X
+        br
+
     .form-group
       label.col-sm-3.control-label Opciones
-      .col-lg-9
+      .col-lg-6
         .input-group
           input.form-control(
-            type= 'text',
             ng-model = 'input.labelOption'
           )
-          span.input-group-addon
-            button.btn.btn-success.btn-xs(
-              ng-click= 'addOptions()',
-            ) Agregar
+      .col-md-3
+        button.btn.btn-success(
+          ng-click= 'addOptions()'
+        ) Agregar
     .form-group
       .col-sm-offset-3.col-sm-10
           .checkbox

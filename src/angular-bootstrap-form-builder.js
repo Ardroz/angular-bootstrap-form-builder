@@ -307,7 +307,7 @@ function formElement ( templateCache, compile ) {
       scope.addOptions = function () {
         if ( (/select/g).test( this.input.type ) ) {
           this.input.options.push({
-            label: this.input.labelOption,
+            label: this.input.labelOption
           });
         } else {
 
@@ -329,6 +329,12 @@ function formElement ( templateCache, compile ) {
           this.$parent.input.checkboxes.splice( this.$index, 1 );
         }
       };
+
+      scope.$watch( 'input', function ( input ) {
+        // body...
+        console.log(scope.form.inputs);
+
+      }, true);
     }
   };
 }
