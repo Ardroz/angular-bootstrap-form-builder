@@ -1,6 +1,6 @@
 {
   "name": "angular-bootstrap-form-builder",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Angular boostrap form builder",
   "main": "angular-bootstrap-form-builder.js",
   "dependencies": {},

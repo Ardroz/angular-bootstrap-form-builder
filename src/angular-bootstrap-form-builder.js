@@ -92,7 +92,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'inline_radios',
                 label: 'Radios en línea',
-                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
+                id: scope.form.inputs.length,
                 radios: []
               });
             break;
@@ -101,7 +101,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'list_radios',
                 label: 'Radios en lista',
-                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
+                id: scope.form.inputs.length,
                 radios: []
               });
             break;
@@ -110,7 +110,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'inline_checkboxes',
                 label: 'Checks en línea',
-                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
+                id: scope.form.inputs.length,
                 checkboxes: []
               }
             );
@@ -120,7 +120,7 @@ function formBuilder ( templateCache ) {
               {
                 type: 'list_checkboxes',
                 label: 'Checks en lista',
-                id: scope.form.inputs.length ? 0 : scope.form.inputs.length,
+                id: scope.form.inputs.length,
                 checkboxes: []
               });
             break;
@@ -213,13 +213,13 @@ function formElementInterpreter ( templateCache, compile ) {
 
       scope.generateInputName = function ( input ) {
         return input.label.replace(/[^\w\s]/gi, '').toLowerCase().replace(/\s/g, '_') + scope.index;
-
       };
 
       scope.validateRadioButton = function  (input, values) {
         var value = scope.values[scope.generateInputName(input)];
         scope.validations[scope.generateInputName(input)] = value ? false : true;
       };
+
       scope.validateCheckbox = function  (input, values) {
         var value = scope.values[scope.generateInputName(input)];
 
@@ -230,7 +230,6 @@ function formElementInterpreter ( templateCache, compile ) {
               scope.validations[scope.generateInputName(input)] = false;
             }
           });
-
         }
         else {
           scope.validations[scope.generateInputName(input)] = true;
