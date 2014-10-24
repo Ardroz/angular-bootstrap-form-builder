@@ -251,7 +251,7 @@ function formElement ( templateCache, compile ) {
     },
     link: function ( scope, element, attrs ){
       scope.input.editable = false;
-      scope.input.required = false;
+      scope.input.required = scope.input.required || scope.input.required === 'true';
       var template = templateCache.get('templates/builder/' + scope.input.type + '.html');
       element = element.replaceWith( compile( template )( scope ) );
 
